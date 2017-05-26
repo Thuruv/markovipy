@@ -12,19 +12,10 @@ def fix_caps(word):
     :type word: <str>
     :return: <str>
     """
-    if word.isupper() and word != "I":
-        """eg: word -> 'AAA', result -> 'aaa'
-        """
-        word = word.lower()
-    elif word[0].isupper():
-        """eg: word -> 'AvA', result -> 'Ava'
-        """
-        word = word.lower().capitalize()
-    else:
-        """eg: word -> 'aVA', result -> 'ava'
-        """
-        word = word.lower()
-    return word
+    # Just to ensure the articles class
+    articles = ['a', 'an', 'of', 'the', 'is']
+    return ' '.join([word.capitalize() if  paragraph.index(word) == 0 else word.lower()
+            for word in paragraph.split(" ")])
 
 
 def get_word_list(file):
